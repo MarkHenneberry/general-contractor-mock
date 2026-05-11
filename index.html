@@ -1,0 +1,1787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pinnacle Contracting — Halifax & HRM General Contractors</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:           #F8F5EE;
+      --bg-alt:       #EDEAE0;
+      --dark:         #1C1915;
+      --dark-2:       #252119;
+      --accent:       #B5531F;
+      --accent-dark:  #8B3E14;
+      --accent-light: #D4714A;
+      --text:         #1C1915;
+      --text-muted:   #79745E;
+      --border:       #DDD8CC;
+      --white:        #FDFCF8;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+    }
+
+    /* ── HEADER ── */
+    #site-header {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: rgba(248,245,238,0.94);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    .header-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .logo-mark {
+      width: 34px;
+      height: 34px;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+    .logo-text span { color: var(--accent); }
+    .desktop-nav { display: none; }
+    .desktop-nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    .nav-link {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text);
+      text-decoration: none;
+      opacity: 0.65;
+      letter-spacing: 0.01em;
+      transition: opacity 0.2s ease, color 0.2s ease;
+    }
+    .nav-link:hover { opacity: 1; color: var(--accent); }
+    .header-actions { display: flex; align-items: center; gap: 0.875rem; }
+
+    /* ── BUTTONS ── */
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 0.75rem 1.625rem;
+      cursor: pointer;
+      border: none;
+      transition: transform 0.18s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.18s ease, background 0.18s ease;
+    }
+    .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+    .btn:active { transform: translateY(1px) !important; }
+
+    .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 2px 10px rgba(181,83,31,0.28); }
+    .btn-primary:hover { background: var(--accent-dark); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(181,83,31,0.36); }
+
+    .btn-outline-dark { background: transparent; color: var(--text); border: 1.5px solid var(--border); }
+    .btn-outline-dark:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+    .btn-ghost-light { background: transparent; color: rgba(255,255,255,0.85); border: 1.5px solid rgba(255,255,255,0.35); }
+    .btn-ghost-light:hover { border-color: rgba(255,255,255,0.75); color: #fff; background: rgba(255,255,255,0.08); transform: translateY(-2px); }
+
+    .btn-white { background: #fff; color: var(--accent); box-shadow: 0 4px 18px rgba(0,0,0,0.14); }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.2); }
+
+    /* ── HAMBURGER ── */
+    .hamburger {
+      background: none; border: none; cursor: pointer;
+      display: flex; flex-direction: column; justify-content: center;
+      gap: 5px; width: 36px; height: 36px; padding: 4px;
+    }
+    .ham-line {
+      display: block; width: 22px; height: 1.5px;
+      background: var(--text);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      transform-origin: center;
+    }
+    .hamburger.open .ham-line:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open .ham-line:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open .ham-line:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* ── MOBILE MENU ── */
+    #mobile-menu {
+      display: none; position: absolute; top: 100%; left: 0; right: 0;
+      background: var(--white); border-bottom: 1px solid var(--border);
+      padding: 1.5rem; box-shadow: 0 12px 40px rgba(28,25,21,0.12);
+    }
+    #mobile-menu.open { display: block; }
+    #mobile-menu ul { list-style: none; display: flex; flex-direction: column; gap: 0.875rem; margin-bottom: 1.5rem; }
+    #mobile-menu .nav-link { font-size: 1rem; opacity: 1; }
+
+    /* ── LABELS & LAYOUT ── */
+    .label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--accent);
+    }
+    .label-light { color: var(--accent-light); }
+    .label-muted { color: rgba(255,255,255,0.38); }
+
+    .section { padding: 5.5rem 1.5rem; }
+    .container { max-width: 1240px; margin: 0 auto; }
+
+    .section-header { text-align: center; max-width: 560px; margin: 0 auto 3.5rem; }
+    .section-header h2 { font-size: clamp(2rem,4vw,2.75rem); margin: 0.75rem 0 1rem; color: var(--text); }
+    .section-header p { color: var(--text-muted); font-size: 0.95rem; }
+    .section-header-light h2 { color: #fff; }
+    .section-header-light p { color: rgba(255,255,255,0.5); }
+
+    /* ── HERO ── */
+    #hero { position: relative; min-height: 92vh; background: var(--dark); display: flex; align-items: center; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; z-index: 0; }
+    .hero-bg img { width: 100%; height: 100%; object-fit: cover; opacity: 0.38; }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(130deg,rgba(28,25,21,0.92) 0%,rgba(28,25,21,0.55) 55%,rgba(139,62,20,0.15) 100%); }
+    .hero-grain { position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; }
+    .hero-accent-line { position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg,var(--accent) 0%,transparent 70%); }
+    .hero-content { position: relative; z-index: 2; max-width: 1240px; margin: 0 auto; padding: 6rem 1.5rem 5rem; width: 100%; }
+    .hero-inner { max-width: 660px; }
+    .hero-h1 { font-size: clamp(2.6rem,6.5vw,4.5rem); font-weight: 700; color: #fff; letter-spacing: -0.03em; line-height: 1.06; margin: 0.8rem 0 1.5rem; }
+    .hero-sub { font-size: 1.05rem; color: rgba(255,255,255,0.68); max-width: 500px; margin-bottom: 2.5rem; line-height: 1.8; }
+    .hero-btns { display: flex; flex-wrap: wrap; gap: 0.875rem; margin-bottom: 3.5rem; }
+    .hero-trust { display: flex; flex-wrap: wrap; gap: 1.25rem 2rem; }
+    .hero-trust-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.04em; color: rgba(255,255,255,0.52); }
+    .hero-trust-dot { width: 5px; height: 5px; background: var(--accent-light); border-radius: 50%; flex-shrink: 0; }
+
+    /* ── TRUST BAR ── */
+    #trust-bar { background: var(--dark-2); padding: 1.375rem 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .trust-bar-inner { max-width: 1240px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem 2.5rem; align-items: center; }
+    .trust-pill { display: flex; align-items: center; gap: 0.5rem; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
+    .trust-pill svg { flex-shrink: 0; }
+    .trust-divider { width: 1px; height: 18px; background: rgba(255,255,255,0.1); }
+
+    /* ── SEASONAL BANNER ── */
+    #seasonal-banner {
+      background: var(--dark);
+      border-top: 1px solid rgba(255,255,255,0.04);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 0.875rem 1.5rem;
+    }
+    .seasonal-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+    .seasonal-badge {
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.625rem;
+      flex-shrink: 0;
+    }
+    .seasonal-text {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.62);
+      letter-spacing: 0.02em;
+    }
+    .seasonal-text strong {
+      color: rgba(255,255,255,0.85);
+      font-weight: 600;
+    }
+    .seasonal-cta {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(212,113,74,0.4);
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .seasonal-cta:hover { color: #fff; border-color: rgba(255,255,255,0.4); }
+
+    /* ── ABOUT ── */
+    #about { background: var(--bg); }
+    .about-grid { display: grid; grid-template-columns: 1fr; gap: 3.5rem; align-items: center; }
+    .about-text h2 { font-size: clamp(2rem,4vw,2.875rem); margin: 0.75rem 0 1.5rem; color: var(--text); }
+    .about-text p { color: var(--text-muted); margin-bottom: 1.125rem; font-size: 0.975rem; }
+    .about-text p:last-of-type { margin-bottom: 2.25rem; }
+    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .stat-card { padding: 1.75rem; }
+    .stat-card-cream { background: var(--white); border: 1px solid var(--border); }
+    .stat-card-accent { background: var(--accent); }
+    .stat-card-dark { background: var(--dark); }
+    .stat-number { font-family: 'Playfair Display', serif; font-size: 2.25rem; font-weight: 700; line-height: 1; color: var(--accent); }
+    .stat-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 0.5rem; color: var(--text-muted); }
+
+    /* ── COMMERCIAL / RESIDENTIAL POSITIONING ── */
+    #positioning { background: var(--bg-alt); }
+    .positioning-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    .pos-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .pos-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+    }
+    .pos-card-res::before { background: var(--accent); }
+    .pos-card-com::before { background: var(--dark); }
+    .pos-card-icon {
+      width: 48px; height: 48px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.5rem;
+      border: 1px solid var(--border);
+    }
+    .pos-card h3 { font-size: 1.35rem; margin-bottom: 0.75rem; color: var(--text); }
+    .pos-card > p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; line-height: 1.7; }
+    .pos-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 1.75rem;
+    }
+    .pos-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+    .pos-list li::before {
+      content: '';
+      width: 4px; height: 4px;
+      background: var(--accent);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .pos-tag {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.75rem;
+      margin-right: 0.5rem;
+      margin-bottom: 0.5rem;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+
+    /* ── SERVICES ── */
+    #services { background: var(--bg); }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 1.375rem; }
+    .service-card {
+      background: var(--white); border: 1px solid var(--border); padding: 1.875rem;
+      opacity: 0; transform: translateY(22px);
+      transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1), border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    .service-card.visible { opacity: 1; transform: translateY(0); }
+    .service-card:hover { border-color: var(--accent); box-shadow: 0 10px 36px rgba(28,25,21,0.09), 0 3px 12px rgba(28,25,21,0.06); transform: translateY(-3px); }
+    .service-card.visible:hover { transform: translateY(-3px); }
+    .service-bar { width: 36px; height: 2.5px; background: var(--accent); margin-bottom: 1.25rem; }
+    .service-card h3 { font-size: 1.1rem; margin-bottom: 0.625rem; color: var(--text); }
+    .service-card p { color: var(--text-muted); font-size: 0.875rem; line-height: 1.72; }
+
+    /* ── PROJECT TYPES ── */
+    #project-types { background: var(--dark); }
+    .project-types-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.375rem;
+    }
+    .ptype-card {
+      border: 1px solid rgba(255,255,255,0.07);
+      padding: 2rem;
+      position: relative;
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1), border-color 0.25s ease, background 0.25s ease;
+    }
+    .ptype-card.visible { opacity: 1; transform: translateY(0); }
+    .ptype-card:hover { border-color: rgba(181,83,31,0.35); background: rgba(181,83,31,0.05); }
+    .ptype-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      margin-bottom: 1rem;
+    }
+    .ptype-card h3 { font-size: 1.1rem; color: #fff; margin-bottom: 0.625rem; }
+    .ptype-card p { font-size: 0.855rem; color: rgba(255,255,255,0.45); line-height: 1.72; }
+
+    /* ── GALLERY ── */
+    #work { background: var(--bg-alt); }
+    .gallery-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2.75rem; flex-wrap: wrap; gap: 1rem; }
+    .gallery-header h2 { font-size: clamp(2rem,4vw,2.75rem); margin: 0.75rem 0 0; color: var(--text); }
+    .gallery-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.375rem; }
+    .project-card { position: relative; overflow: hidden; border-radius: 2px; background: var(--dark-2); }
+    .project-card img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.55s cubic-bezier(0.25,0.46,0.45,0.94); }
+    .project-card:hover img { transform: scale(1.06); }
+    .project-overlay { position: absolute; inset: 0; background: linear-gradient(to top,rgba(28,25,21,0.88) 0%,rgba(28,25,21,0.3) 50%,transparent 80%); }
+    .project-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem; z-index: 1; }
+    .project-type { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-light); }
+    .project-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: #fff; margin: 0.3rem 0 0.2rem; line-height: 1.25; }
+    .project-location { font-size: 0.72rem; color: rgba(255,255,255,0.45); }
+    .project-scope { font-size: 0.72rem; color: rgba(255,255,255,0.35); margin-top: 0.35rem; line-height: 1.5; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.5rem; }
+
+    /* ── BEFORE / AFTER ── */
+    #before-after { background: var(--bg); }
+    .ba-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      position: relative;
+    }
+    .ba-panel {
+      position: relative;
+      overflow: hidden;
+      height: 460px;
+    }
+    .ba-panel img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .ba-panel-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(28,25,21,0.75) 0%, transparent 60%);
+    }
+    .ba-label {
+      position: absolute;
+      top: 1.25rem;
+      left: 1.25rem;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.75rem;
+      z-index: 2;
+    }
+    .ba-label-before { background: var(--dark); color: rgba(255,255,255,0.6); }
+    .ba-label-after  { background: var(--accent); color: #fff; }
+    .ba-divider {
+      position: absolute;
+      top: 0; bottom: 0;
+      left: 50%;
+      width: 2px;
+      background: var(--white);
+      z-index: 3;
+      transform: translateX(-50%);
+    }
+    .ba-divider-badge {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 40px; height: 40px;
+      background: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 4;
+      box-shadow: 0 2px 12px rgba(28,25,21,0.2);
+    }
+    .ba-info {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 1.375rem 1.5rem;
+      z-index: 2;
+    }
+    .ba-project-title { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: #fff; margin-bottom: 0.25rem; }
+    .ba-project-detail { font-size: 0.76rem; color: rgba(255,255,255,0.5); }
+    .ba-caption {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding-top: 1.75rem;
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 1.375rem;
+    }
+    .ba-stat {
+      text-align: center;
+      padding: 1.25rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+    }
+    .ba-stat-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .ba-stat-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-muted); margin-top: 0.375rem; }
+
+    /* ── WHY CHOOSE US ── */
+    #why { background: var(--dark); }
+    .why-header { text-align: center; max-width: 560px; margin: 0 auto 3.5rem; }
+    .why-header h2 { font-size: clamp(2rem,4vw,2.75rem); margin: 0.75rem 0 0; color: #fff; }
+    .why-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap: 1.375rem; }
+    .why-card {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); padding: 2rem;
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1), border-color 0.25s ease, background 0.25s ease;
+    }
+    .why-card.visible { opacity: 1; transform: translateY(0); }
+    .why-card:hover { border-color: rgba(181,83,31,0.4); background: rgba(181,83,31,0.06); transform: translateY(-2px); }
+    .why-card.visible:hover { transform: translateY(-2px); }
+    .why-icon { width: 38px; height: 38px; background: rgba(181,83,31,0.14); border: 1px solid rgba(181,83,31,0.28); display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; }
+    .why-card h3 { font-size: 1.05rem; color: #fff; margin-bottom: 0.625rem; }
+    .why-card p { font-size: 0.875rem; color: rgba(255,255,255,0.48); line-height: 1.72; }
+
+    /* ── TRUST INFRASTRUCTURE ── */
+    #trust-infra { background: var(--bg-alt); }
+    .trust-infra-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+    .trust-infra-item {
+      background: var(--white);
+      padding: 1.875rem 1.5rem;
+      text-align: center;
+      opacity: 0; transform: translateY(14px);
+      transition: opacity 0.5s cubic-bezier(0.16,1,0.3,1), transform 0.5s cubic-bezier(0.16,1,0.3,1);
+    }
+    .trust-infra-item.visible { opacity: 1; transform: translateY(0); }
+    .trust-infra-icon {
+      width: 44px; height: 44px;
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1rem;
+    }
+    .trust-infra-item h4 { font-family: 'Playfair Display', serif; font-size: 0.95rem; color: var(--text); margin-bottom: 0.375rem; }
+    .trust-infra-item p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* ── TESTIMONIALS ── */
+    #testimonials { background: var(--bg); }
+    .testi-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 1.375rem; }
+    .testi-card {
+      background: var(--white); border: 1px solid var(--border); padding: 2rem; position: relative;
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1);
+    }
+    .testi-card.visible { opacity: 1; transform: translateY(0); }
+    .testi-quote { font-family: 'Playfair Display', serif; font-size: 3rem; line-height: 1; color: var(--accent); margin-bottom: 1.25rem; opacity: 0.7; }
+    .testi-card p { font-size: 0.925rem; color: var(--text); line-height: 1.8; font-style: italic; margin-bottom: 1.5rem; }
+    .testi-divider { height: 1px; background: var(--border); margin-bottom: 1rem; }
+    .testi-name { font-size: 0.85rem; font-weight: 600; color: var(--text); }
+    .testi-detail { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.2rem; }
+    .testi-stars { position: absolute; top: 1.5rem; right: 1.5rem; font-size: 0.7rem; color: var(--accent); letter-spacing: 1px; }
+    .testi-note { text-align: center; margin-top: 1.75rem; font-size: 0.75rem; color: var(--text-muted); font-style: italic; }
+
+    /* ── SUPPLIERS ── */
+    #suppliers { background: var(--dark-2); border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 3rem 1.5rem; }
+    .suppliers-inner { max-width: 1240px; margin: 0 auto; }
+    .suppliers-label {
+      text-align: center;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.28);
+      margin-bottom: 2rem;
+    }
+    .suppliers-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 0;
+    }
+    .supplier-item {
+      padding: 1.125rem 2.25rem;
+      border-right: 1px solid rgba(255,255,255,0.07);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .supplier-item:last-child { border-right: none; }
+    .supplier-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.28);
+      letter-spacing: 0.04em;
+      transition: color 0.2s ease;
+    }
+    .supplier-item:hover .supplier-name { color: rgba(255,255,255,0.55); }
+
+    /* ── PROCESS (6-step) ── */
+    #process { background: var(--bg); }
+    .process-grid-6 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      position: relative;
+    }
+    .process-step-6 {
+      padding: 2rem 1.75rem;
+      border: 1px solid var(--border);
+      margin: -1px 0 0 -1px;
+      opacity: 0; transform: translateY(18px);
+      transition: opacity 0.55s cubic-bezier(0.16,1,0.3,1), transform 0.55s cubic-bezier(0.16,1,0.3,1);
+    }
+    .process-step-6.visible { opacity: 1; transform: translateY(0); }
+    .process-step-6:hover { z-index: 1; border-color: var(--accent); background: var(--white); }
+    .process-step-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent);
+      opacity: 0.35;
+      line-height: 1;
+      margin-bottom: 0.875rem;
+    }
+    .process-step-6 h3 { font-size: 1rem; margin-bottom: 0.5rem; color: var(--text); }
+    .process-step-6 p { font-size: 0.855rem; color: var(--text-muted); line-height: 1.7; }
+
+    /* ── SERVICE AREAS ── */
+    #service-areas { background: var(--bg-alt); }
+    .areas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1.25rem;
+    }
+    .area-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 1.625rem 1.25rem;
+      text-align: center;
+      opacity: 0; transform: translateY(14px);
+      transition: opacity 0.5s cubic-bezier(0.16,1,0.3,1), transform 0.5s cubic-bezier(0.16,1,0.3,1), border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .area-card.visible { opacity: 1; transform: translateY(0); }
+    .area-card:hover { border-color: var(--accent); box-shadow: 0 6px 24px rgba(28,25,21,0.07); transform: translateY(-2px); }
+    .area-card.visible:hover { transform: translateY(-2px); }
+    .area-icon { display: flex; justify-content: center; margin-bottom: 0.875rem; }
+    .area-card h4 { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--text); margin-bottom: 0.25rem; }
+    .area-card p { font-size: 0.76rem; color: var(--text-muted); }
+
+    /* ── FINAL CTA ── */
+    #cta { background: var(--accent); padding: 5.5rem 1.5rem; position: relative; overflow: hidden; }
+    .cta-pattern { position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg width='48' height='48' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 48L48 0H24L0 24M48 48V24L24 48' fill='none' stroke='white' stroke-opacity='0.06' stroke-width='1'/%3E%3C/svg%3E"); pointer-events: none; }
+    .cta-inner { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; text-align: center; }
+    .cta-inner h2 { font-size: clamp(2rem,5vw,3rem); color: #fff; margin-bottom: 1.125rem; }
+    .cta-inner p { color: rgba(255,255,255,0.78); font-size: 1.05rem; margin-bottom: 2.5rem; line-height: 1.78; }
+    .cta-btns { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--bg); }
+    .contact-grid { display: grid; grid-template-columns: 1fr; gap: 3.5rem; align-items: start; }
+    .contact-info h2 { font-size: clamp(2rem,4vw,2.75rem); margin: 0.75rem 0 1.25rem; color: var(--text); }
+    .contact-info > p { color: var(--text-muted); margin-bottom: 2.5rem; font-size: 0.95rem; }
+    .contact-items { display: flex; flex-direction: column; gap: 1.375rem; }
+    .contact-item { display: flex; align-items: flex-start; gap: 1rem; }
+    .contact-icon { width: 40px; height: 40px; background: var(--bg-alt); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .contact-item-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text); margin-bottom: 0.25rem; }
+    .contact-item a, .contact-item p { font-size: 0.9rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s ease; line-height: 1.6; }
+    .contact-item a:hover { color: var(--accent); }
+
+    /* Form */
+    .contact-form { background: var(--white); border: 1px solid var(--border); padding: 2.5rem; }
+    .contact-form h3 { font-size: 1.45rem; margin-bottom: 0.5rem; color: var(--text); }
+    .form-subtitle { font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1.75rem; }
+    .form-body { display: flex; flex-direction: column; gap: 1.125rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group label {
+      display: block; font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.07em; text-transform: uppercase; color: var(--text); margin-bottom: 0.45rem;
+    }
+    .form-input {
+      width: 100%; padding: 0.7rem 0.95rem;
+      background: var(--bg); border: 1px solid var(--border);
+      color: var(--text); font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem; line-height: 1.5;
+      transition: border-color 0.2s ease, background 0.2s ease;
+      appearance: none; -webkit-appearance: none;
+    }
+    .form-input:focus { outline: none; border-color: var(--accent); background: var(--white); }
+    .form-input::placeholder { color: var(--text-muted); opacity: 0.7; }
+    textarea.form-input { resize: vertical; min-height: 90px; }
+    select.form-input {
+      background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%2379745E' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.875rem center;
+      padding-right: 2.5rem;
+    }
+    .form-divider {
+      height: 1px; background: var(--border); margin: 0.375rem 0;
+    }
+    .form-section-label {
+      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--text-muted); padding-bottom: 0.375rem;
+    }
+    /* Radio group */
+    .radio-group {
+      display: flex; flex-wrap: wrap; gap: 0.625rem;
+    }
+    .radio-option {
+      display: flex; align-items: center; gap: 0.5rem;
+      padding: 0.55rem 1rem;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      background: var(--bg);
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+      user-select: none;
+    }
+    .radio-option input[type="radio"] { display: none; }
+    .radio-option:has(input:checked) {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(181,83,31,0.05);
+    }
+    .radio-dot {
+      display: block;
+      width: 10px; height: 10px;
+      border: 1.5px solid currentColor;
+      border-radius: 50%;
+      flex-shrink: 0;
+      position: relative;
+    }
+    .radio-option:has(input:checked) .radio-dot::after {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      width: 4px; height: 4px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+    /* File upload */
+    .file-upload {
+      border: 1.5px dashed var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      cursor: pointer;
+      background: var(--bg);
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .file-upload:hover { border-color: var(--accent); background: rgba(181,83,31,0.03); }
+    .file-upload-icon { display: flex; justify-content: center; margin-bottom: 0.625rem; }
+    .file-upload-text { font-size: 0.875rem; color: var(--text-muted); font-weight: 500; }
+    .file-upload-text strong { color: var(--accent); }
+    .file-upload-hint { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem; opacity: 0.7; }
+    .file-upload-names { font-size: 0.78rem; color: var(--accent); margin-top: 0.5rem; }
+
+    .form-submit { width: 100%; text-align: center; font-family: 'DM Sans', sans-serif; }
+    .form-note { text-align: center; font-size: 0.76rem; color: var(--text-muted); }
+
+    /* ── FOOTER ── */
+    #footer { background: var(--dark); padding: 4.5rem 1.5rem 2rem; border-top: 1px solid rgba(255,255,255,0.05); }
+    .footer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem 3rem; margin-bottom: 3rem; }
+    .footer-brand-text { font-size: 0.875rem; color: rgba(255,255,255,0.38); line-height: 1.72; margin-top: 1rem; max-width: 280px; }
+    .footer-col-title { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.28); margin-bottom: 1.125rem; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+    .footer-links a { font-size: 0.875rem; color: rgba(255,255,255,0.48); text-decoration: none; transition: color 0.2s ease; }
+    .footer-links a:hover { color: rgba(255,255,255,0.85); }
+    .footer-contact-items { display: flex; flex-direction: column; gap: 0.7rem; }
+    .footer-contact-items a, .footer-contact-items p { font-size: 0.875rem; color: rgba(255,255,255,0.48); text-decoration: none; transition: color 0.2s ease; line-height: 1.6; }
+    .footer-contact-items a:hover { color: rgba(255,255,255,0.85); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.07); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; }
+    .footer-bottom p { font-size: 0.76rem; color: rgba(255,255,255,0.25); }
+    .footer-bottom span { color: rgba(255,255,255,0.38); }
+
+    /* ── MOBILE CTA BAR ── */
+    #mobile-cta-bar { position: fixed; bottom: 0; left: 0; right: 0; display: none; z-index: 150; background: var(--dark); border-top: 1px solid rgba(255,255,255,0.1); padding: 0.75rem 1.25rem; gap: 0.75rem; }
+    #mobile-cta-bar a { flex: 1; text-align: center; padding: 0.85rem 0.5rem; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; text-decoration: none; transition: opacity 0.2s ease; }
+    #mobile-cta-bar a:active { opacity: 0.8; }
+    .mobile-cta-call { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.14); color: #fff; }
+    .mobile-cta-quote { background: var(--accent); color: #fff; }
+
+    /* ── RESPONSIVE ── */
+    @media (min-width: 640px) {
+      .about-stats { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: repeat(2,1fr); }
+      .positioning-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (min-width: 768px) {
+      .desktop-nav { display: block; }
+      .hamburger { display: none; }
+      .btn-header-cta { display: inline-block !important; }
+      #mobile-cta-bar { display: none !important; }
+      .about-grid { grid-template-columns: 1fr 1fr; }
+      .contact-grid { grid-template-columns: 1fr 1.2fr; }
+      .ba-grid { /* already 2-col */ }
+    }
+    @media (min-width: 1024px) {
+      .footer-grid { grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 3rem; }
+    }
+    @media (max-width: 767px) {
+      #mobile-cta-bar { display: flex; }
+      .gallery-grid { grid-template-columns: 1fr !important; }
+      .gallery-grid .project-card[style*="grid-column"] { grid-column: auto !important; }
+      .process-grid-6 { grid-template-columns: 1fr 1fr; }
+      .ba-grid { grid-template-columns: 1fr; }
+      .ba-panel { height: 280px; }
+      .ba-divider, .ba-divider-badge { display: none; }
+      .ba-caption { grid-template-columns: 1fr; }
+      body { padding-bottom: 64px; }
+    }
+    @media (max-width: 480px) {
+      .form-row { grid-template-columns: 1fr; }
+      .process-grid-6 { grid-template-columns: 1fr; }
+      .areas-grid { grid-template-columns: 1fr 1fr; }
+      .trust-infra-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-anim { opacity: 0; animation: fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) forwards; }
+    .d100 { animation-delay: 0.1s; }
+    .d200 { animation-delay: 0.2s; }
+    .d300 { animation-delay: 0.3s; }
+    .d400 { animation-delay: 0.4s; }
+    .d500 { animation-delay: 0.5s; }
+  </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header id="site-header">
+  <div class="header-inner">
+    <a href="#" class="logo">
+      <div class="logo-mark">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+          <path d="M7.5 0L15 7.5H11.25V15H3.75V7.5H0L7.5 0Z" fill="white"/>
+        </svg>
+      </div>
+      <span class="logo-text">Pinnacle <span>Contracting</span></span>
+    </a>
+    <nav class="desktop-nav">
+      <ul>
+        <li><a href="#services" class="nav-link">Services</a></li>
+        <li><a href="#work" class="nav-link">Our Work</a></li>
+        <li><a href="#service-areas" class="nav-link">Areas</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <a href="#contact" class="btn btn-primary btn-header-cta" style="display:none;">Get a Free Quote</a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span class="ham-line"></span>
+        <span class="ham-line"></span>
+        <span class="ham-line"></span>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu">
+    <ul>
+      <li><a href="#services" class="nav-link" onclick="closeMobileMenu()">Services</a></li>
+      <li><a href="#work" class="nav-link" onclick="closeMobileMenu()">Our Work</a></li>
+      <li><a href="#service-areas" class="nav-link" onclick="closeMobileMenu()">Areas</a></li>
+      <li><a href="#about" class="nav-link" onclick="closeMobileMenu()">About</a></li>
+      <li><a href="#contact" class="nav-link" onclick="closeMobileMenu()">Contact</a></li>
+    </ul>
+    <a href="#contact" class="btn btn-primary" onclick="closeMobileMenu()" style="display:block;text-align:center;">Get a Free Quote</a>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section id="hero">
+  <div class="hero-bg">
+    <img src="https://placehold.co/1600x900/2A2520/3A3028?text=" alt="Contracting work">
+    <div class="hero-overlay"></div>
+    <div class="hero-grain"></div>
+  </div>
+  <div class="hero-accent-line"></div>
+  <div class="hero-content">
+    <div class="hero-inner">
+      <div class="hero-anim"><span class="label label-light">Halifax &amp; HRM</span></div>
+      <h1 class="hero-h1 hero-anim d100">Built Right.<br>Finished Properly.</h1>
+      <p class="hero-sub hero-anim d200">Serving Halifax, Dartmouth, Cole Harbour, and surrounding areas with reliable contracting, renovation, and property improvement services.</p>
+      <div class="hero-btns hero-anim d300">
+        <a href="#contact" class="btn btn-primary">Request a Free Quote</a>
+        <a href="#work" class="btn btn-ghost-light">View Our Work</a>
+      </div>
+      <div class="hero-trust hero-anim d400">
+        <div class="hero-trust-item"><span class="hero-trust-dot"></span>Fully Insured</div>
+        <div class="hero-trust-item"><span class="hero-trust-dot"></span>Free Estimates</div>
+        <div class="hero-trust-item"><span class="hero-trust-dot"></span>Residential &amp; Commercial</div>
+        <div class="hero-trust-item"><span class="hero-trust-dot"></span>Quality Workmanship</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TRUST BAR ===== -->
+<div id="trust-bar">
+  <div class="trust-bar-inner">
+    <div class="trust-pill">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1.5l1.5 4.5H15L10.5 9l1.5 4.5L8 11l-4 2.5L5.5 9 1 6h5.5L8 1.5z" fill="var(--accent)"/></svg>
+      Fully Insured
+    </div>
+    <div class="trust-divider"></div>
+    <div class="trust-pill">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1.5l1.5 4.5H15L10.5 9l1.5 4.5L8 11l-4 2.5L5.5 9 1 6h5.5L8 1.5z" fill="var(--accent)"/></svg>
+      Free Estimates
+    </div>
+    <div class="trust-divider"></div>
+    <div class="trust-pill">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1.5l1.5 4.5H15L10.5 9l1.5 4.5L8 11l-4 2.5L5.5 9 1 6h5.5L8 1.5z" fill="var(--accent)"/></svg>
+      Local Service Area
+    </div>
+    <div class="trust-divider"></div>
+    <div class="trust-pill">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1.5l1.5 4.5H15L10.5 9l1.5 4.5L8 11l-4 2.5L5.5 9 1 6h5.5L8 1.5z" fill="var(--accent)"/></svg>
+      Residential &amp; Commercial
+    </div>
+    <div class="trust-divider"></div>
+    <div class="trust-pill">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1.5l1.5 4.5H15L10.5 9l1.5 4.5L8 11l-4 2.5L5.5 9 1 6h5.5L8 1.5z" fill="var(--accent)"/></svg>
+      Quality Workmanship
+    </div>
+  </div>
+</div>
+
+<!-- ===== SEASONAL BOOKING BANNER ===== -->
+<div id="seasonal-banner">
+  <div class="seasonal-inner">
+    <span class="seasonal-badge">Now Booking</span>
+    <span class="seasonal-text"><strong>Summer 2026 project slots are filling up.</strong> Limited exterior &amp; renovation availability remaining.</span>
+    <a href="#contact" class="seasonal-cta">Secure Your Spot →</a>
+  </div>
+</div>
+
+<!-- ===== ABOUT ===== -->
+<section id="about" class="section">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        <span class="label">About Us</span>
+        <h2>Reliable Work,<br>Clear Communication</h2>
+        <p>We help homeowners and businesses complete projects with clear communication, reliable workmanship, and attention to detail from start to finish.</p>
+        <p>Whether it's a renovation, exterior upgrade, repair, or larger property improvement project, our goal is to make the process straightforward and the finished work something you're proud of.</p>
+        <a href="#contact" class="btn btn-primary">Get in Touch</a>
+      </div>
+      <div class="about-stats">
+        <div class="stat-card stat-card-cream">
+          <div class="stat-number">HRM</div>
+          <div class="stat-label">Local Service Area</div>
+        </div>
+        <div class="stat-card stat-card-accent">
+          <div style="font-family:'Playfair Display',serif;font-size:2.25rem;font-weight:700;color:#fff;line-height:1;">Free</div>
+          <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-top:0.5rem;color:rgba(255,255,255,0.7);">Estimates</div>
+        </div>
+        <div class="stat-card stat-card-dark">
+          <div style="font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:#fff;line-height:1.25;">Homes &amp;<br>Businesses</div>
+          <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-top:0.5rem;color:rgba(255,255,255,0.4);">We Work With</div>
+        </div>
+        <div class="stat-card stat-card-cream">
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Quality Focus</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RESIDENTIAL / COMMERCIAL POSITIONING ===== -->
+<section id="positioning" class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="label">Who We Work With</span>
+      <h2>Residential &amp; Commercial</h2>
+      <p>We work with homeowners, property managers, and small commercial operations across HRM.</p>
+    </div>
+    <div class="positioning-grid">
+
+      <div class="pos-card pos-card-res">
+        <div class="pos-card-icon">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M2 9L10 2l8 7v9a1 1 0 01-1 1H3a1 1 0 01-1-1V9z" stroke="var(--accent)" stroke-width="1.5" stroke-linejoin="round"/><path d="M7 20v-7h6v7" stroke="var(--accent)" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Residential Clients</h3>
+        <p>We work directly with homeowners who want reliable work done right — no subcontracting surprises, no chasing for updates.</p>
+        <ul class="pos-list">
+          <li>Full interior &amp; exterior renovations</li>
+          <li>Roofing, siding, and deck work</li>
+          <li>Flooring, painting, and finishing</li>
+          <li>Ongoing property maintenance</li>
+          <li>Repairs and smaller jobs</li>
+        </ul>
+        <div>
+          <span class="pos-tag">Homeowners</span>
+          <span class="pos-tag">Rental Properties</span>
+          <span class="pos-tag">Estate Work</span>
+        </div>
+        <a href="#contact" class="btn btn-primary" style="margin-top:1.5rem;">Get a Residential Quote</a>
+      </div>
+
+      <div class="pos-card pos-card-com">
+        <div class="pos-card-icon" style="border-color:var(--dark);">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="4" width="16" height="14" rx="1" stroke="var(--text)" stroke-width="1.5"/><path d="M6 4V2M14 4V2M2 9h16" stroke="var(--text)" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Commercial Clients</h3>
+        <p>We handle small to mid-scale commercial contracting for property managers, retail owners, and business operators who need dependable work without disruption.</p>
+        <ul class="pos-list">
+          <li>Office and retail fit-outs</li>
+          <li>Building envelope repairs and upgrades</li>
+          <li>Commercial roofing and siding</li>
+          <li>Property maintenance contracts</li>
+          <li>Insurance and restoration work</li>
+        </ul>
+        <div>
+          <span class="pos-tag">Property Managers</span>
+          <span class="pos-tag">Retail &amp; Office</span>
+          <span class="pos-tag">Insurance Work</span>
+        </div>
+        <a href="#contact" class="btn btn-outline-dark" style="margin-top:1.5rem;border-color:var(--dark);">Get a Commercial Quote</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section id="services" class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="label">What We Do</span>
+      <h2>Our Services</h2>
+      <p>From small repairs to full renovations, we handle residential and commercial work across the Halifax Regional Municipality.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card"><div class="service-bar"></div><h3>Renovations</h3><p>Interior and exterior improvements designed to make your space more functional, polished, and valuable.</p></div>
+      <div class="service-card"><div class="service-bar"></div><h3>Roofing</h3><p>Reliable roofing repairs and replacements completed with care and attention to detail.</p></div>
+      <div class="service-card"><div class="service-bar"></div><h3>Siding</h3><p>Exterior siding installation, repair, and replacement for improved protection and curb appeal.</p></div>
+      <div class="service-card"><div class="service-bar"></div><h3>Decks</h3><p>Custom deck builds and repairs for outdoor spaces that are built to last.</p></div>
+      <div class="service-card"><div class="service-bar"></div><h3>Flooring</h3><p>Installation, refinishing, and repair for hardwood, laminate, tile, and vinyl flooring.</p></div>
+      <div class="service-card"><div class="service-bar"></div><h3>Painting</h3><p>Interior and exterior painting done cleanly, efficiently, and with proper preparation.</p></div>
+      <div class="service-card"><div class="service-bar"></div><h3>Property Maintenance</h3><p>General repairs, upgrades, and ongoing property work for homeowners and small businesses.</p></div>
+      <div class="service-card"><div class="service-bar"></div><h3>Repairs &amp; Small Jobs</h3><p>Quick turnaround on smaller fixes, touch-ups, and handyman work that needs doing right.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROJECT TYPES ===== -->
+<section id="project-types" class="section" style="background:var(--dark);">
+  <div class="container">
+    <div class="section-header section-header-light">
+      <span class="label label-light">Scale &amp; Scope</span>
+      <h2 style="color:#fff;">Types of Projects We Handle</h2>
+      <p style="color:rgba(255,255,255,0.48);">From single-room work to full-building upgrades — here's the range of what we take on.</p>
+    </div>
+    <div class="project-types-grid">
+
+      <div class="ptype-card">
+        <div class="ptype-num">01</div>
+        <h3>Full Exterior Remodels</h3>
+        <p>Complete exterior transformations covering siding, roofing, trim, fascia, and drainage — handled as a coordinated package.</p>
+      </div>
+
+      <div class="ptype-card">
+        <div class="ptype-num">02</div>
+        <h3>Basement Renovations</h3>
+        <p>Full basement finishing and renovation from framing and insulation through flooring, trim, and electrical-ready layouts.</p>
+      </div>
+
+      <div class="ptype-card">
+        <div class="ptype-num">03</div>
+        <h3>Outdoor Living Spaces</h3>
+        <p>Custom decks, pergolas, patio work, and landscaping structures built for durability and outdoor enjoyment.</p>
+      </div>
+
+      <div class="ptype-card">
+        <div class="ptype-num">04</div>
+        <h3>Commercial Improvements</h3>
+        <p>Interior fit-outs, storefront upgrades, and commercial building repairs handled with minimal disruption to operations.</p>
+      </div>
+
+      <div class="ptype-card">
+        <div class="ptype-num">05</div>
+        <h3>Property Maintenance</h3>
+        <p>Scheduled and on-call maintenance for residential and commercial properties — keeping things in working order year-round.</p>
+      </div>
+
+      <div class="ptype-card">
+        <div class="ptype-num">06</div>
+        <h3>Insurance Repair Work</h3>
+        <p>Documented repair work for insurance claims — storm damage, water damage, fire damage — handled professionally and thoroughly.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== GALLERY ===== -->
+<section id="work" class="section">
+  <div class="container">
+    <div class="gallery-header">
+      <div>
+        <span class="label">Portfolio</span>
+        <h2>Featured Work</h2>
+      </div>
+      <p style="color:var(--text-muted);max-width:340px;font-size:0.9rem;">A sample of recent projects across Halifax and surrounding areas.</p>
+    </div>
+    <div class="gallery-grid">
+
+      <div class="project-card" style="grid-column:span 2;height:400px;">
+        <img src="https://placehold.co/860x400/302B26/4A4238?text=" alt="Exterior Renovation" style="height:400px;">
+        <div class="project-overlay"></div>
+        <div class="project-info">
+          <div class="project-type">Exterior Work</div>
+          <div class="project-title">Full Exterior Upgrade — Residential</div>
+          <div class="project-location">Halifax, NS</div>
+          <div class="project-scope">James Hardie siding, GAF architectural shingles, new fascia &amp; soffit. 3-week project.</div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:1.375rem;">
+        <div class="project-card" style="height:192px;">
+          <img src="https://placehold.co/400x192/302B26/4A4238?text=" alt="Deck Build" style="height:192px;">
+          <div class="project-overlay"></div>
+          <div class="project-info">
+            <div class="project-type">Decks</div>
+            <div class="project-title">Custom Deck Build</div>
+            <div class="project-scope">TimberTech composite, 600 sq ft, privacy screen.</div>
+          </div>
+        </div>
+        <div class="project-card" style="height:192px;">
+          <img src="https://placehold.co/400x192/302B26/4A4238?text=" alt="Roof Repair" style="height:192px;">
+          <div class="project-overlay"></div>
+          <div class="project-info">
+            <div class="project-type">Roofing</div>
+            <div class="project-title">Roof Repair &amp; Seal</div>
+            <div class="project-scope">IKO Dynasty shingles, ice &amp; water shield, full valley replacement.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card" style="height:280px;">
+        <img src="https://placehold.co/400x280/302B26/4A4238?text=" alt="Interior Renovation" style="height:280px;">
+        <div class="project-overlay"></div>
+        <div class="project-info">
+          <div class="project-type">Interior</div>
+          <div class="project-title">Basement Renovation</div>
+          <div class="project-location">Dartmouth, NS</div>
+          <div class="project-scope">Full finish — framing, insulation, LVP flooring, paint, trim.</div>
+        </div>
+      </div>
+
+      <div class="project-card" style="height:280px;">
+        <img src="https://placehold.co/400x280/302B26/4A4238?text=" alt="Commercial Repair" style="height:280px;">
+        <div class="project-overlay"></div>
+        <div class="project-info">
+          <div class="project-type">Commercial</div>
+          <div class="project-title">Retail Exterior Repair</div>
+          <div class="project-location">Cole Harbour, NS</div>
+          <div class="project-scope">CertainTeed siding, painted trim, storefront caulking &amp; sealing.</div>
+        </div>
+      </div>
+
+      <div class="project-card" style="height:280px;">
+        <img src="https://placehold.co/400x280/302B26/4A4238?text=" alt="Property Maintenance" style="height:280px;">
+        <div class="project-overlay"></div>
+        <div class="project-info">
+          <div class="project-type">Maintenance</div>
+          <div class="project-title">Ongoing Property Contract</div>
+          <div class="project-location">Bedford, NS</div>
+          <div class="project-scope">Bi-annual maintenance, repairs, painting, seasonal prep.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== BEFORE / AFTER ===== -->
+<section id="before-after" class="section" style="background:var(--bg-alt);">
+  <div class="container">
+    <div class="section-header">
+      <span class="label">Transformation</span>
+      <h2>Before &amp; After</h2>
+      <p>A look at the difference well-planned contracting work can make to a property.</p>
+    </div>
+
+    <div style="position:relative;">
+      <div class="ba-grid">
+        <div class="ba-panel">
+          <img src="https://placehold.co/620x460/2A2520/403830?text=" alt="Before renovation">
+          <div class="ba-panel-overlay"></div>
+          <span class="ba-label ba-label-before">Before</span>
+          <div class="ba-info">
+            <div class="ba-project-title">Exterior Siding &amp; Roofing Replacement</div>
+            <div class="ba-project-detail">Original cedar siding, aging 3-tab shingles, failing fascia</div>
+          </div>
+        </div>
+        <div class="ba-panel">
+          <img src="https://placehold.co/620x460/302B26/4A4238?text=" alt="After renovation">
+          <div class="ba-panel-overlay"></div>
+          <span class="ba-label ba-label-after">After</span>
+          <div class="ba-info">
+            <div class="ba-project-title">Halifax, NS — Completed Spring 2024</div>
+            <div class="ba-project-detail">James Hardie lap siding, GAF Timberline HDZ, new aluminum fascia</div>
+          </div>
+        </div>
+        <div class="ba-divider"></div>
+        <div class="ba-divider-badge">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4M7 4L3 8l4 4" stroke="var(--text-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+
+      <div class="ba-caption">
+        <div class="ba-stat">
+          <div class="ba-stat-value">3 Wks</div>
+          <div class="ba-stat-label">Project Duration</div>
+        </div>
+        <div class="ba-stat">
+          <div class="ba-stat-value">$38k</div>
+          <div class="ba-stat-label">Project Range</div>
+        </div>
+        <div class="ba-stat">
+          <div class="ba-stat-value">2 Trades</div>
+          <div class="ba-stat-label">Coordinated</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHY CHOOSE US ===== -->
+<section id="why" class="section">
+  <div class="container">
+    <div class="why-header">
+      <span class="label label-light">Why Work With Us</span>
+      <h2>The Difference in How We Work</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="var(--accent)" stroke-width="1.5"/><path d="M5 8l2.5 2.5L11 5.5" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Clear Communication</h3>
+        <p>We keep the process straightforward from first call to finished job.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="1" stroke="var(--accent)" stroke-width="1.5"/><path d="M5 8h6M8 5v6" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <h3>Reliable Workmanship</h3>
+        <p>Every project is handled with care, pride, and attention to detail.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5.5" r="2.5" stroke="var(--accent)" stroke-width="1.5"/><path d="M2.5 14c0-3 2.5-5.5 5.5-5.5S13.5 11 13.5 14" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <h3>Local &amp; Responsive</h3>
+        <p>Serving the local area with practical service and quick communication.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1.5l1.4 4.2H14l-3.7 2.7 1.4 4.2L8 10l-3.7 2.6 1.4-4.2L2 5.7h4.6L8 1.5z" stroke="var(--accent)" stroke-width="1.25" stroke-linejoin="round"/></svg></div>
+        <h3>Built Around Your Project</h3>
+        <p>From small repairs to larger renovations, the work is planned around your needs.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TRUST INFRASTRUCTURE ===== -->
+<section id="trust-infra" class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="label">Our Commitment</span>
+      <h2>What You Can Expect</h2>
+      <p>Every project we take on is backed by these standards — not just said, but followed.</p>
+    </div>
+    <div class="trust-infra-grid">
+
+      <div class="trust-infra-item">
+        <div class="trust-infra-icon">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 1.5L2 5v5c0 4.4 3 7.5 7 8.5 4-1 7-4.1 7-8.5V5L9 1.5z" stroke="var(--accent)" stroke-width="1.5" stroke-linejoin="round"/><path d="M6 9l2 2 4-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <h4>Licensed &amp; Insured</h4>
+        <p>Fully covered for liability and workers' compensation on every job site.</p>
+      </div>
+
+      <div class="trust-infra-item">
+        <div class="trust-infra-icon">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="3" width="14" height="12" rx="1" stroke="var(--accent)" stroke-width="1.5"/><path d="M2 8h14M6 3V1M12 3V1" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <h4>Written Estimates</h4>
+        <p>Every quote is documented with a clear scope so there are no surprises at the end.</p>
+      </div>
+
+      <div class="trust-infra-item">
+        <div class="trust-infra-icon">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2a7 7 0 100 14A7 7 0 009 2z" stroke="var(--accent)" stroke-width="1.5"/><path d="M9 6v4l2.5 2.5" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <h4>Warranty-Backed Work</h4>
+        <p>We stand behind completed projects with a workmanship warranty for peace of mind.</p>
+      </div>
+
+      <div class="trust-infra-item">
+        <div class="trust-infra-icon">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="var(--accent)" stroke-width="1.5"/><path d="M6 9l2 2 4-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h4>Local Team</h4>
+        <p>We are based in HRM. The people quoting and building your project live here too.</p>
+      </div>
+
+      <div class="trust-infra-item">
+        <div class="trust-infra-icon">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9h12M9 3v12" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/><rect x="2" y="2" width="14" height="14" rx="1" stroke="var(--accent)" stroke-width="1.5"/></svg>
+        </div>
+        <h4>Clean Job Sites</h4>
+        <p>We tidy up at the end of each day and leave the site clean once the work is complete.</p>
+      </div>
+
+      <div class="trust-infra-item">
+        <div class="trust-infra-icon">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.5 4h11l-1 8H4.5L3.5 4z" stroke="var(--accent)" stroke-width="1.5" stroke-linejoin="round"/><path d="M1.5 4h15M7 4V2.5a1 1 0 011-1h2a1 1 0 011 1V4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <h4>Clear Communication</h4>
+        <p>We respond to messages, show up when scheduled, and keep you updated throughout.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section id="testimonials" class="section" style="background:var(--bg-alt);">
+  <div class="container">
+    <div class="section-header">
+      <span class="label">What Clients Say</span>
+      <h2>Client Feedback</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">"</div>
+        <p>Great communication, clean work, and the finished result was exactly what we were hoping for.</p>
+        <div class="testi-divider"></div>
+        <div class="testi-name">Sarah M.</div>
+        <div class="testi-detail">Halifax, NS — Exterior Renovation</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">"</div>
+        <p>Professional from start to finish. They showed up when they said they would and did quality work.</p>
+        <div class="testi-divider"></div>
+        <div class="testi-name">James T.</div>
+        <div class="testi-detail">Dartmouth, NS — Deck Build</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">"</div>
+        <p>The project was handled well and the end result made a big difference to the property.</p>
+        <div class="testi-divider"></div>
+        <div class="testi-name">Karen L.</div>
+        <div class="testi-detail">Cole Harbour, NS — Interior Reno</div>
+      </div>
+    </div>
+    <p class="testi-note">* Placeholder testimonials — real reviews to be added.</p>
+  </div>
+</section>
+
+<!-- ===== SUPPLIERS ===== -->
+<div id="suppliers">
+  <div class="suppliers-inner">
+    <div class="suppliers-label">Using Trusted Industry Materials</div>
+    <div class="suppliers-row">
+      <div class="supplier-item"><span class="supplier-name">GAF</span></div>
+      <div class="supplier-item"><span class="supplier-name">CertainTeed</span></div>
+      <div class="supplier-item"><span class="supplier-name">TimberTech</span></div>
+      <div class="supplier-item"><span class="supplier-name">James Hardie</span></div>
+      <div class="supplier-item"><span class="supplier-name">IKO</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PROCESS (6-step) ===== -->
+<section id="process" class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="label">How It Works</span>
+      <h2>Our Process</h2>
+      <p>A clear, consistent approach from first call to final walkthrough — so you always know where things stand.</p>
+    </div>
+    <div class="process-grid-6">
+
+      <div class="process-step-6">
+        <div class="process-step-num">01</div>
+        <h3>Consultation</h3>
+        <p>We discuss your project goals, timeline, and what matters most to you — by phone, message, or in person.</p>
+      </div>
+
+      <div class="process-step-6">
+        <div class="process-step-num">02</div>
+        <h3>Site Visit</h3>
+        <p>We visit the property to assess the scope, take measurements, and ask the right questions before quoting.</p>
+      </div>
+
+      <div class="process-step-6">
+        <div class="process-step-num">03</div>
+        <h3>Transparent Estimate</h3>
+        <p>You receive a written estimate with a clear breakdown of materials, labour, and timeline — no guesswork.</p>
+      </div>
+
+      <div class="process-step-6">
+        <div class="process-step-num">04</div>
+        <h3>Project Scheduling</h3>
+        <p>Once approved, we set a start date, confirm materials, and give you a realistic project schedule.</p>
+      </div>
+
+      <div class="process-step-6">
+        <div class="process-step-num">05</div>
+        <h3>Build &amp; Communication</h3>
+        <p>The work is done efficiently, with regular updates and a clean, organized job site throughout.</p>
+      </div>
+
+      <div class="process-step-6">
+        <div class="process-step-num">06</div>
+        <h3>Final Walkthrough</h3>
+        <p>We walk through the finished project together — making sure everything meets your expectations before we close out.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICE AREAS ===== -->
+<section id="service-areas" class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="label">Where We Work</span>
+      <h2>Proudly Serving HRM</h2>
+      <p>We are a local contractor based in the Halifax Regional Municipality, serving communities across the region.</p>
+    </div>
+    <div class="areas-grid">
+
+      <div class="area-card">
+        <div class="area-icon">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2C7 2 5 4.2 5 7c0 4.9 5 11 5 11s5-6.1 5-11c0-2.8-2-5-5-5z" stroke="var(--accent)" stroke-width="1.5"/><circle cx="10" cy="7" r="2" stroke="var(--accent)" stroke-width="1.5"/></svg>
+        </div>
+        <h4>Halifax</h4>
+        <p>All areas</p>
+      </div>
+
+      <div class="area-card">
+        <div class="area-icon">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2C7 2 5 4.2 5 7c0 4.9 5 11 5 11s5-6.1 5-11c0-2.8-2-5-5-5z" stroke="var(--accent)" stroke-width="1.5"/><circle cx="10" cy="7" r="2" stroke="var(--accent)" stroke-width="1.5"/></svg>
+        </div>
+        <h4>Dartmouth</h4>
+        <p>All areas</p>
+      </div>
+
+      <div class="area-card">
+        <div class="area-icon">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2C7 2 5 4.2 5 7c0 4.9 5 11 5 11s5-6.1 5-11c0-2.8-2-5-5-5z" stroke="var(--accent)" stroke-width="1.5"/><circle cx="10" cy="7" r="2" stroke="var(--accent)" stroke-width="1.5"/></svg>
+        </div>
+        <h4>Bedford</h4>
+        <p>All areas</p>
+      </div>
+
+      <div class="area-card">
+        <div class="area-icon">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2C7 2 5 4.2 5 7c0 4.9 5 11 5 11s5-6.1 5-11c0-2.8-2-5-5-5z" stroke="var(--accent)" stroke-width="1.5"/><circle cx="10" cy="7" r="2" stroke="var(--accent)" stroke-width="1.5"/></svg>
+        </div>
+        <h4>Sackville</h4>
+        <p>All areas</p>
+      </div>
+
+      <div class="area-card">
+        <div class="area-icon">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2C7 2 5 4.2 5 7c0 4.9 5 11 5 11s5-6.1 5-11c0-2.8-2-5-5-5z" stroke="var(--accent)" stroke-width="1.5"/><circle cx="10" cy="7" r="2" stroke="var(--accent)" stroke-width="1.5"/></svg>
+        </div>
+        <h4>Cole Harbour</h4>
+        <p>All areas</p>
+      </div>
+
+      <div class="area-card">
+        <div class="area-icon">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2C7 2 5 4.2 5 7c0 4.9 5 11 5 11s5-6.1 5-11c0-2.8-2-5-5-5z" stroke="var(--accent)" stroke-width="1.5"/><circle cx="10" cy="7" r="2" stroke="var(--accent)" stroke-width="1.5"/></svg>
+        </div>
+        <h4>Eastern Passage</h4>
+        <p>All areas</p>
+      </div>
+
+    </div>
+    <p style="text-align:center;margin-top:1.75rem;font-size:0.85rem;color:var(--text-muted);">Not sure if we cover your area? <a href="#contact" style="color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(181,83,31,0.3);">Get in touch and we'll let you know.</a></p>
+  </div>
+</section>
+
+<!-- ===== FINAL CTA ===== -->
+<section id="cta">
+  <div class="cta-pattern"></div>
+  <div class="cta-inner">
+    <h2>Ready to Start Your Next Project?</h2>
+    <p>Tell us what you need done and we'll get back to you with the next steps.</p>
+    <div class="cta-btns">
+      <a href="#contact" class="btn btn-white">Request a Quote</a>
+      <a href="tel:+19021234567" class="btn btn-ghost-light">Call Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact" class="section">
+  <div class="container">
+    <div class="contact-grid">
+
+      <div class="contact-info">
+        <span class="label">Contact Us</span>
+        <h2>Get in Touch</h2>
+        <p>Send us a message or call to discuss your project. We'll get back to you promptly.</p>
+        <div class="contact-items">
+
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 2h2.5l1.5 4-1.75 1.5c.9 1.8 2.5 3.3 4.25 4.25L11 10l4 1.5V14a1 1 0 01-1 .92C5.2 15.3.7 10.8.08 3A1 1 0 011 2h2z" stroke="var(--accent)" stroke-width="1.5" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <div class="contact-item-label">Phone</div>
+              <a href="tel:+19021234567">(902) 123-4567</a>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1.5" y="3.5" width="13" height="9" rx="1" stroke="var(--accent)" stroke-width="1.5"/><path d="M1.5 4.5l6.5 4.5 6.5-4.5" stroke="var(--accent)" stroke-width="1.5"/></svg>
+            </div>
+            <div>
+              <div class="contact-item-label">Email</div>
+              <a href="mailto:info@pinnaclecontracting.ca">info@pinnaclecontracting.ca</a>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1C5.2 1 3 3.2 3 6c0 3.9 5 9 5 9s5-5.1 5-9c0-2.8-2.2-5-5-5z" stroke="var(--accent)" stroke-width="1.5"/><circle cx="8" cy="6" r="1.75" stroke="var(--accent)" stroke-width="1.5"/></svg>
+            </div>
+            <div>
+              <div class="contact-item-label">Service Area</div>
+              <p>Halifax, Dartmouth, Cole Harbour, Bedford, and surrounding HRM areas</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M14 8a6 6 0 11-12 0 6 6 0 0112 0z" stroke="var(--accent)" stroke-width="1.5"/><path d="M10 8a2 2 0 01-2 2 2 2 0 01-2-2 2 2 0 012-2c.55 0 1.05.22 1.41.59" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/><path d="M12 4v4h-2" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <div>
+              <div class="contact-item-label">Find Us Online</div>
+              <a href="#">Facebook Page (placeholder)</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <h3>Request a Quote</h3>
+        <p class="form-subtitle">Fill in the details below and we'll follow up within one business day.</p>
+        <form class="form-body" onsubmit="handleFormSubmit(event)">
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Name *</label>
+              <input type="text" id="name" class="form-input" placeholder="Your name" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" class="form-input" placeholder="(902) 000-0000">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" class="form-input" placeholder="your@email.com" required>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="project-type">Project Type</label>
+              <select id="project-type" class="form-input">
+                <option value="" disabled selected>Select type…</option>
+                <option>Renovation</option>
+                <option>Roofing</option>
+                <option>Siding</option>
+                <option>Deck</option>
+                <option>Exterior Upgrade</option>
+                <option>Commercial</option>
+                <option>Repair</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="budget">Budget Range</label>
+              <select id="budget" class="form-input">
+                <option value="" disabled selected>Select range…</option>
+                <option>Under $5,000</option>
+                <option>$5,000 – $15,000</option>
+                <option>$15,000 – $50,000</option>
+                <option>$50,000+</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="timeline">Timeline</label>
+            <select id="timeline" class="form-input">
+              <option value="" disabled selected>When do you need this done?</option>
+              <option>ASAP</option>
+              <option>Within 30 Days</option>
+              <option>1–3 Months</option>
+              <option>Planning Stage</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Preferred Contact Method</label>
+            <div class="radio-group">
+              <label class="radio-option">
+                <input type="radio" name="contact-pref" value="phone">
+                <span class="radio-dot"></span>Phone
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="contact-pref" value="email">
+                <span class="radio-dot"></span>Email
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="contact-pref" value="either" checked>
+                <span class="radio-dot"></span>Either
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="details">Project Details</label>
+            <textarea id="details" class="form-input" rows="3" placeholder="Briefly describe the work you need done…"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>Attach Photos <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--text-muted);">(optional)</span></label>
+            <div class="file-upload" id="file-drop" onclick="document.getElementById('file-input').click()">
+              <input type="file" id="file-input" accept="image/*,.pdf" multiple style="display:none" onchange="handleFileChange(this)">
+              <div class="file-upload-icon">
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 14V4M7 8l4-4 4 4" stroke="var(--text-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 16v1a2 2 0 002 2h10a2 2 0 002-2v-1" stroke="var(--text-muted)" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </div>
+              <div class="file-upload-text"><strong>Click to browse</strong> or drag photos here</div>
+              <div class="file-upload-hint">JPG, PNG, PDF — up to 10 MB each</div>
+              <div class="file-upload-names" id="file-names"></div>
+            </div>
+          </div>
+
+          <button type="submit" id="submit-btn" class="btn btn-primary form-submit">Send Message</button>
+          <p class="form-note">We'll get back to you within one business day.</p>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="#" class="logo">
+          <div class="logo-mark">
+            <svg width="14" height="14" viewBox="0 0 15 15" fill="none"><path d="M7.5 0L15 7.5H11.25V15H3.75V7.5H0L7.5 0Z" fill="white"/></svg>
+          </div>
+          <span class="logo-text" style="color:#fff;">Pinnacle <span>Contracting</span></span>
+        </a>
+        <p class="footer-brand-text">Reliable contracting services for homeowners and businesses across Halifax, Dartmouth, Cole Harbour, and surrounding areas.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Navigation</div>
+        <ul class="footer-links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#work">Our Work</a></li>
+          <li><a href="#service-areas">Service Areas</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Services</div>
+        <ul class="footer-links">
+          <li><a href="#services">Renovations</a></li>
+          <li><a href="#services">Roofing</a></li>
+          <li><a href="#services">Decks</a></li>
+          <li><a href="#services">Painting</a></li>
+          <li><a href="#services">Maintenance</a></li>
+          <li><a href="#services">Commercial</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <div class="footer-contact-items">
+          <a href="tel:+19021234567">(902) 123-4567</a>
+          <a href="mailto:info@pinnaclecontracting.ca">info@pinnaclecontracting.ca</a>
+          <p>Halifax, Dartmouth, Cole Harbour, Bedford &amp; surrounding HRM areas</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Pinnacle Contracting. All rights reserved. — Concept site / portfolio example.</p>
+      <p>Built by <span>Onward Systems</span></p>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== MOBILE CTA BAR ===== -->
+<div id="mobile-cta-bar">
+  <a href="tel:+19021234567" class="mobile-cta-call">Call Now</a>
+  <a href="#contact" class="mobile-cta-quote">Get a Quote</a>
+</div>
+
+<script>
+  // ── Nav hamburger ────────────────────────────────
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', isOpen);
+  });
+
+  function closeMobileMenu() {
+    mobileMenu.classList.remove('open');
+    hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', false);
+  }
+
+  // ── Responsive ───────────────────────────────────
+  function onResize() {
+    const headerCta = document.querySelector('.btn-header-cta');
+    if (window.innerWidth >= 768) {
+      headerCta.style.display = 'inline-block';
+      hamburger.style.display = 'none';
+    } else {
+      headerCta.style.display = 'none';
+      hamburger.style.display = 'flex';
+    }
+  }
+  window.addEventListener('resize', onResize);
+  onResize();
+
+  // ── Intersection reveal ──────────────────────────
+  const revealEls = document.querySelectorAll(
+    '.service-card, .why-card, .testi-card, .ptype-card, .area-card, .trust-infra-item, .process-step-6'
+  );
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const siblings = [...el.parentElement.children];
+        const idx = siblings.indexOf(el);
+        setTimeout(() => el.classList.add('visible'), idx * 75);
+        revealObserver.unobserve(el);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  revealEls.forEach(el => revealObserver.observe(el));
+
+  // ── Smooth scroll ────────────────────────────────
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const href = a.getAttribute('href');
+      if (href === '#') return;
+      const target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        closeMobileMenu();
+      }
+    });
+  });
+
+  // ── File upload display ──────────────────────────
+  function handleFileChange(input) {
+    const names = [...input.files].map(f => f.name).join(', ');
+    document.getElementById('file-names').textContent = names || '';
+  }
+
+  // Drag-and-drop styling
+  const dropArea = document.getElementById('file-drop');
+  if (dropArea) {
+    dropArea.addEventListener('dragover', e => { e.preventDefault(); dropArea.style.borderColor = 'var(--accent)'; });
+    dropArea.addEventListener('dragleave', () => { dropArea.style.borderColor = ''; });
+    dropArea.addEventListener('drop', e => {
+      e.preventDefault();
+      dropArea.style.borderColor = '';
+      const fi = document.getElementById('file-input');
+      fi.files = e.dataTransfer.files;
+      handleFileChange(fi);
+    });
+  }
+
+  // ── Form submit ──────────────────────────────────
+  function handleFormSubmit(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submit-btn');
+    btn.textContent = 'Message Sent!';
+    btn.style.background = '#3A7A30';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.textContent = 'Send Message';
+      btn.style.background = '';
+      btn.disabled = false;
+      e.target.reset();
+      document.getElementById('file-names').textContent = '';
+    }, 3000);
+  }
+</script>
+
+</body>
+</html>
